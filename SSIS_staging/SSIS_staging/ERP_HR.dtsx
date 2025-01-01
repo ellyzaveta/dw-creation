@@ -1,0 +1,2807 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/31/2024 11:23:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-85KNV27"
+  DTS:CreatorName="DESKTOP-85KNV27\Liza"
+  DTS:DTSID="{292DDF8B-6E6B-45F5-A4FF-455A8882A584}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{B1EF09E4-1CCA-4FB0-BD46-F6F49E8C1772}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A4AB2554-B846-46CB-8F73-F5E72A0F2C4D}"
+      DTS:ObjectName="DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-85KNV27\SQLEXPRESS;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{A4AB2554-B846-46CB-8F73-F5E72A0F2C4D}DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4F1CC28A-F4DA-4591-8DAC-7402951EDCD5}"
+      DTS:ObjectName="DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-85KNV27\SQLEXPRESS;Initial Catalog=AWN_STG_Demo;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{4F1CC28A-F4DA-4591-8DAC-7402951EDCD5}DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Empl Department History"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7CF90114-1856-4FB6-8041-9E0F3F0DB660}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Empl Department History">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Empl Department History\Load Empl Department History"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{BCCE0A6A-D28D-4CE3-80BC-DC9DAF59BF8E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Empl Department History"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Empl Department History\Load Empl Department History\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Empl Department History\Load Empl Department History\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Empl Department History\Load Empl Department History\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output].Columns[Created_Dt]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output].Columns[Created_Dt]"
+                          name="Created_Dt"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::CreationDate]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::CreationDate]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Empl Department History\Load Empl Department History\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination 1"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[EmployeeDepartmentHistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                          cachedDataType="i2"
+                          cachedName="DepartmentID"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[DepartmentID]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[ShiftID]"
+                          cachedDataType="ui1"
+                          cachedName="ShiftID"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ShiftID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ShiftID]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                          cachedDataType="dbDate"
+                          cachedName="StartDate"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[StartDate]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[EndDate]"
+                          cachedDataType="dbDate"
+                          cachedName="EndDate"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[EndDate]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[SSISTrackId]"
+                          cachedDataType="i8"
+                          cachedName="SSISTrackId"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackId]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Created_Dt]"
+                          cachedDataType="date"
+                          cachedName="Created_Dt"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output].Columns[Created_Dt]" />
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[Name]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                          dataType="i2"
+                          name="DepartmentID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ShiftID]"
+                          dataType="ui1"
+                          name="ShiftID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                          dataType="dbDate"
+                          name="StartDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                          dataType="dbDate"
+                          name="EndDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                          dataType="wstr"
+                          length="50"
+                          name="DepartmentName" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          dataType="dbTimeStamp"
+                          name="Created_Dt" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          dataType="i4"
+                          name="SSISTrackId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Empl Department History\Load Empl Department History\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[HumanResources].[EmployeeDepartmentHistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                          name="DepartmentID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShiftID]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShiftID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShiftID]"
+                          name="ShiftID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]"
+                          name="StartDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]"
+                          name="EndDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                          dataType="i2"
+                          name="DepartmentID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShiftID]"
+                          dataType="ui1"
+                          name="ShiftID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                          dataType="dbDate"
+                          name="StartDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                          dataType="dbDate"
+                          name="EndDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                          dataType="i2"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                          name="DepartmentID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShiftID]"
+                          dataType="ui1"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShiftID]"
+                          name="ShiftID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
+                          name="StartDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
+                          name="EndDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source 1"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[HumanResources].[Department]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                          name="DepartmentID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[GroupName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[GroupName]"
+                          length="50"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[GroupName]"
+                          name="GroupName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                          dataType="i2"
+                          name="DepartmentID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[GroupName]"
+                          dataType="wstr"
+                          length="50"
+                          name="GroupName" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                          dataType="i2"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                          name="DepartmentID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[GroupName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[GroupName]"
+                          name="GroupName" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Empl Department History\Load Empl Department History\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1].Columns[DepartmentID]"
+                          cachedDataType="i2"
+                          cachedName="DepartmentID"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[DepartmentID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1].Columns[ShiftID]"
+                          cachedDataType="ui1"
+                          cachedName="ShiftID"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShiftID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ShiftID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1].Columns[StartDate]"
+                          cachedDataType="dbDate"
+                          cachedName="StartDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[StartDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1].Columns[EndDate]"
+                          cachedDataType="dbDate"
+                          cachedName="EndDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[EndDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 2].Columns[DepartmentID]"
+                          cachedDataType="i2"
+                          cachedName="DepartmentID"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[DepartmentID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[DepartmentID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 2].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ModifiedDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 2].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          lineageId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Name]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 3]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[DepartmentID]"
+                          dataType="i2"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[DepartmentID]"
+                          name="DepartmentID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ShiftID]"
+                          dataType="ui1"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ShiftID]"
+                          name="ShiftID" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[StartDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[StartDate]"
+                          name="StartDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[EndDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[EndDate]"
+                          name="EndDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1].Columns[Name]"
+                          name="Name" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Empl Department History\Load Empl Department History.Paths[Derived Column Output]"
+                  endId="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Empl Department History\Load Empl Department History\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Empl Department History\Load Empl Department History.Paths[OLE DB Source Output]"
+                  endId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Empl Department History\Load Empl Department History\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Empl Department History\Load Empl Department History.Paths[OLE DB Source Output1]"
+                  endId="Package\Empl Department History\Load Empl Department History\Union All.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\Empl Department History\Load Empl Department History\OLE DB Source 1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Empl Department History\Load Empl Department History.Paths[Union All Output 1]"
+                  endId="Package\Empl Department History\Load Empl Department History\Derived Column.Inputs[Derived Column Input]"
+                  name="Union All Output 1"
+                  startId="Package\Empl Department History\Load Empl Department History\Union All.Outputs[Union All Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Empl Department History\Truncate Empl Department History"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{444A0B20-6847-439B-87A4-143D50CAD369}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Empl Department History"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4F1CC28A-F4DA-4591-8DAC-7402951EDCD5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [AWN_STG_Demo].[hr].[EmployeeDepartmentHistory]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Empl Department History.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{91147054-C373-471E-8AA9-280427E929A5}"
+          DTS:From="Package\Empl Department History\Truncate Empl Department History"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Empl Department History\Load Empl Department History" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Empl Pay History"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E0F18100-74F6-4396-9318-ED4632F0EF82}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Empl Pay History">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Empl Pay History\Empl Pay History"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{B2453E88-CC5A-4C04-AFC3-1F49E8F21996}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Empl Pay History"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[EmployeePayHistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RateChangeDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="RateChangeDate"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RateChangeDate]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[RateChangeDate]" />
+                        <inputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rate]"
+                          cachedDataType="cy"
+                          cachedName="Rate"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rate]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[Rate]" />
+                        <inputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PayFrequency]"
+                          cachedDataType="ui1"
+                          cachedName="PayFrequency"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PayFrequency]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayFrequency]" />
+                        <inputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RateChangeDate]"
+                          dataType="dbTimeStamp"
+                          name="RateChangeDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rate]"
+                          dataType="cy"
+                          name="Rate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PayFrequency]"
+                          dataType="ui1"
+                          name="PayFrequency" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Empl Pay History\Empl Pay History\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[HumanResources].[EmployeePayHistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[RateChangeDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RateChangeDate]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[RateChangeDate]"
+                          name="RateChangeDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[Rate]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Rate]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[Rate]"
+                          name="Rate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayFrequency]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PayFrequency]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayFrequency]"
+                          name="PayFrequency"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RateChangeDate]"
+                          dataType="dbTimeStamp"
+                          name="RateChangeDate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Rate]"
+                          dataType="cy"
+                          name="Rate" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PayFrequency]"
+                          dataType="ui1"
+                          name="PayFrequency" />
+                        <externalMetadataColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RateChangeDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RateChangeDate]"
+                          name="RateChangeDate" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Rate]"
+                          dataType="cy"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Rate]"
+                          name="Rate" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PayFrequency]"
+                          dataType="ui1"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PayFrequency]"
+                          name="PayFrequency" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Set SSISTrackId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Output].Columns[Created_Dt]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Output].Columns[Created_Dt]"
+                          name="Created_Dt"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::CreationDate]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::CreationDate]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Empl Pay History\Empl Pay History.Paths[Derived Column Output]"
+                  endId="Package\Empl Pay History\Empl Pay History\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Empl Pay History\Empl Pay History.Paths[OLE DB Source Output]"
+                  endId="Package\Empl Pay History\Empl Pay History\Set SSISTrackId.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Empl Pay History\Empl Pay History\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Empl Pay History\Truncate Empl Pay History"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F9BA607A-7C55-468E-BC7E-59E5368AA741}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Empl Pay History"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4F1CC28A-F4DA-4591-8DAC-7402951EDCD5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [AWN_STG_Demo].[hr].[EmployeePayHistory]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Empl Pay History.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2EE775E4-1597-40A1-B2AC-6A6BC07B5B01}"
+          DTS:From="Package\Empl Pay History\Truncate Empl Pay History"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Empl Pay History\Empl Pay History" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Employee"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9816CF2F-0EE0-484C-8DB8-461AD4233F25}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Employee">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Employee\Load Employee Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{58EDB39D-8617-4060-A9E2-0CC82B60E9BD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Employee Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Employee\Load Employee Data\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Employee\Load Employee Data\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Employee\Load Employee Data\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackId]"
+                          name="SSISTrackId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ServerExecutionID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output].Columns[Created_Dt]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output].Columns[Created_Dt]"
+                          name="Created_Dt"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::CreationDate]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::CreationDate]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Employee\Load Employee Data\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Employee\Load Employee Data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[Employee]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Employee\Load Employee Data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AWN_STG_Demo]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NationalIDNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="NationalIDNumber"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NationalIDNumber]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[NationalIDNumber]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LoginID]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="LoginID"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoginID]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoginID]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrganizationNode]"
+                          cachedDataType="bytes"
+                          cachedLength="892"
+                          cachedName="OrganizationNode"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationNode]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrganizationNode]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrganizationLevel]"
+                          cachedDataType="i2"
+                          cachedName="OrganizationLevel"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationLevel]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrganizationLevel]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[JobTitle]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="JobTitle"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[JobTitle]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                          cachedDataType="dbDate"
+                          cachedName="BirthDate"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="MaritalStatus"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HireDate]"
+                          cachedDataType="dbDate"
+                          cachedName="HireDate"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalariedFlag]"
+                          cachedDataType="bool"
+                          cachedName="SalariedFlag"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalariedFlag]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalariedFlag]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VacationHours]"
+                          cachedDataType="i2"
+                          cachedName="VacationHours"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VacationHours]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[VacationHours]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SickLeaveHours]"
+                          cachedDataType="i2"
+                          cachedName="SickLeaveHours"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SickLeaveHours]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SickLeaveHours]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CurrentFlag]"
+                          cachedDataType="bool"
+                          cachedName="CurrentFlag"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFlag]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentFlag]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SSISTrackId]"
+                          cachedDataType="i8"
+                          cachedName="SSISTrackId"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          lineageId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackId]" />
+                        <inputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Created_Dt]"
+                          cachedDataType="date"
+                          cachedName="Created_Dt"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          lineageId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output].Columns[Created_Dt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NationalIDNumber]"
+                          dataType="wstr"
+                          length="15"
+                          name="NationalIDNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoginID]"
+                          dataType="wstr"
+                          length="256"
+                          name="LoginID" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationNode]"
+                          dataType="bytes"
+                          length="892"
+                          name="OrganizationNode" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationLevel]"
+                          dataType="i2"
+                          name="OrganizationLevel" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                          dataType="wstr"
+                          length="50"
+                          name="JobTitle" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          dataType="dbDate"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                          dataType="wstr"
+                          length="1"
+                          name="MaritalStatus" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          dataType="wstr"
+                          length="1"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                          dataType="dbDate"
+                          name="HireDate" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalariedFlag]"
+                          dataType="bool"
+                          name="SalariedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VacationHours]"
+                          dataType="i2"
+                          name="VacationHours" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SickLeaveHours]"
+                          dataType="i2"
+                          name="SickLeaveHours" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFlag]"
+                          dataType="bool"
+                          name="CurrentFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                          dataType="dbTimeStamp"
+                          name="Created_Dt" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                          dataType="i4"
+                          name="SSISTrackId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Employee\Load Employee Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Employee\Load Employee Data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[HumanResources].[Employee]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Employee\Load Employee Data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-85KNV27\SQLEXPRESS.AdventureWorks2014]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                          length="15"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                          name="NationalIDNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoginID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                          length="256"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoginID]"
+                          name="LoginID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrganizationNode]"
+                          dataType="bytes"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrganizationNode]"
+                          length="892"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrganizationNode]"
+                          name="OrganizationNode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrganizationLevel]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrganizationLevel]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrganizationLevel]"
+                          name="OrganizationLevel"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
+                          length="50"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                          name="JobTitle"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                          name="BirthDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                          length="1"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                          name="MaritalStatus"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          length="1"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]"
+                          name="HireDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalariedFlag]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalariedFlag]"
+                          name="SalariedFlag"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[VacationHours]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[VacationHours]"
+                          name="VacationHours"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SickLeaveHours]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SickLeaveHours]"
+                          name="SickLeaveHours"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentFlag]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentFlag]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentFlag]"
+                          name="CurrentFlag"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                          dataType="wstr"
+                          length="15"
+                          name="NationalIDNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                          dataType="wstr"
+                          length="256"
+                          name="LoginID" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrganizationNode]"
+                          dataType="bytes"
+                          length="892"
+                          name="OrganizationNode" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrganizationLevel]"
+                          dataType="i2"
+                          name="OrganizationLevel" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
+                          dataType="wstr"
+                          length="50"
+                          name="JobTitle" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                          dataType="dbDate"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                          dataType="wstr"
+                          length="1"
+                          name="MaritalStatus" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          dataType="wstr"
+                          length="1"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                          dataType="dbDate"
+                          name="HireDate" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                          dataType="bool"
+                          name="SalariedFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                          dataType="i2"
+                          name="VacationHours" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                          dataType="i2"
+                          name="SickLeaveHours" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrentFlag]"
+                          dataType="bool"
+                          name="CurrentFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                          name="NationalIDNumber" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LoginID]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LoginID]"
+                          name="LoginID" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrganizationNode]"
+                          dataType="bytes"
+                          length="892"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrganizationNode]"
+                          name="OrganizationNode" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrganizationLevel]"
+                          dataType="i2"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrganizationLevel]"
+                          name="OrganizationLevel" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                          name="JobTitle" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                          name="BirthDate" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                          name="MaritalStatus" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          name="Gender" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                          dataType="dbDate"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                          name="HireDate" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalariedFlag]"
+                          dataType="bool"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalariedFlag]"
+                          name="SalariedFlag" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VacationHours]"
+                          dataType="i2"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VacationHours]"
+                          name="VacationHours" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SickLeaveHours]"
+                          dataType="i2"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SickLeaveHours]"
+                          name="SickLeaveHours" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentFlag]"
+                          dataType="bool"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrentFlag]"
+                          name="CurrentFlag" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Employee\Load Employee Data.Paths[Derived Column Output]"
+                  endId="Package\Employee\Load Employee Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Employee\Load Employee Data\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Employee\Load Employee Data.Paths[OLE DB Source Output]"
+                  endId="Package\Employee\Load Employee Data\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Employee\Load Employee Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Employee\Truncate Employee Data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7BA6867B-E15D-4C09-B388-B8DE6C3301B5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Employee Data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4F1CC28A-F4DA-4591-8DAC-7402951EDCD5}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [AWN_STG_Demo].[hr].[Employee]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Employee.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1C33E94F-2A43-44D5-BB4F-918E5642D67B}"
+          DTS:From="Package\Employee\Truncate Employee Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Employee\Load Employee Data" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Employee\Truncate Employee Data"
+          TopLeft="22.1666640217105,26.1578987678332" />
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\Employee\Load Employee Data"
+          TopLeft="35.9166638168196,114.421058323905" />
+        <EdgeLayout
+          Id="Package\Employee.PrecedenceConstraints[Constraint]"
+          TopLeft="123.041663919265,68.8245654344999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5964928894053"
+              Start="0,0"
+              End="0,38.0964928894053">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0964928894053" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="251.333333333334,212"
+          Size="251.333333333334,255.333333333334"
+          Id="Package\Employee"
+          TopLeft="155.624997681007,145.052634309203" />
+        <NodeLayout
+          Size="244,42.6666666666667"
+          Id="Package\Empl Department History\Truncate Empl Department History"
+          TopLeft="21.291659951831,26.9473720528082" />
+        <NodeLayout
+          Size="225.333333333334,42.6666666666667"
+          Id="Package\Empl Department History\Load Empl Department History"
+          TopLeft="28.0416599332047,111.774393325468" />
+        <EdgeLayout
+          Id="Package\Empl Department History.PrecedenceConstraints[Constraint]"
+          TopLeft="141.999993275851,69.6140387194749">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.1603546059935"
+              Start="0,0"
+              End="0,34.6603546059935">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6603546059935" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="290.666666666667,208"
+          Size="290.666666666667,250.666666666667"
+          Id="Package\Empl Department History"
+          TopLeft="429.374993601814,148.491230388317" />
+        <NodeLayout
+          Size="206.666666666667,42.6666666666667"
+          Id="Package\Empl Pay History\Truncate Empl Pay History"
+          TopLeft="25.4166575955851,27.4385995048126" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Empl Pay History\Empl Pay History"
+          TopLeft="50.2499917112292,99.9649166594143" />
+        <EdgeLayout
+          Id="Package\Empl Pay History.PrecedenceConstraints[Constraint]"
+          TopLeft="129.833324653407,70.1052661714793">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.8596504879351"
+              Start="0,0"
+              End="0,22.3596504879351">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.3596504879351" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,206"
+          Size="280,249.333333333334"
+          Id="Package\Empl Pay History"
+          TopLeft="758.33332238098,151.228072545095" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Employee\Load Employee Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Employee\Load Employee Data\OLE DB Source"
+          TopLeft="290.62499566935,95.1052649480154" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Employee\Load Employee Data\OLE DB Destination"
+          TopLeft="276.249995883554,257.947373276272" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Employee\Load Employee Data\Derived Column"
+          TopLeft="284.999995753169,178.578950729727" />
+        <EdgeLayout
+          Id="Package\Employee\Load Employee Data.Paths[OLE DB Source Output]"
+          TopLeft="365.479162377926,137.771931614682">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.8070191150447"
+              Start="0,0"
+              End="0,33.3070191150447">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3070191150447" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee\Load Employee Data.Paths[Derived Column Output]"
+          TopLeft="363.291662485028,221.245617396393">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.7017558798784"
+              Start="0,0"
+              End="0,29.2017558798784">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2017558798784" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Employee\Load Employee Data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Employee\Load Employee Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Empl Department History\Load Empl Department History">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Empl Department History\Load Empl Department History\OLE DB Source"
+          TopLeft="310,99.0000000000001" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Empl Department History\Load Empl Department History\Derived Column"
+          TopLeft="424,282" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Empl Department History\Load Empl Department History\OLE DB Source 1"
+          TopLeft="554,98" />
+        <NodeLayout
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\Empl Department History\Load Empl Department History\Union All"
+          TopLeft="447,182" />
+        <EdgeLayout
+          Id="Package\Empl Department History\Load Empl Department History.Paths[OLE DB Source Output]"
+          TopLeft="387.333333333333,141.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101.888888888889,40.3333333333333"
+              Start="0,0"
+              End="101.888888888889,32.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8884120171673" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.8884120171673"
+                    Point2="0,23.8884120171673"
+                    Point3="4,23.8884120171673" />
+                  <mssgle:LineSegment
+                    End="97.8888888888887,23.8884120171673" />
+                  <mssgle:CubicBezierSegment
+                    Point1="97.8888888888887,23.8884120171673"
+                    Point2="101.888888888889,23.8884120171673"
+                    Point3="101.888888888889,27.8884120171673" />
+                  <mssgle:LineSegment
+                    End="101.888888888889,32.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Empl Department History\Load Empl Department History.Paths[OLE DB Source Output1]"
+          TopLeft="636,140.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-108.555555555556,41.3333333333333"
+              Start="0,0"
+              End="-108.555555555556,33.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.480686695279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.480686695279"
+                    Point2="0,24.480686695279"
+                    Point3="-4,24.480686695279" />
+                  <mssgle:LineSegment
+                    End="-104.555555555556,24.480686695279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-104.555555555556,24.480686695279"
+                    Point2="-108.555555555556,24.480686695279"
+                    Point3="-108.555555555556,28.480686695279" />
+                  <mssgle:LineSegment
+                    End="-108.555555555556,33.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Empl Department History\Load Empl Department History.Paths[Union All Output 1]"
+          TopLeft="505.166666666667,224.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.3333333333333"
+              Start="0,0"
+              End="0,49.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1"
+          TopLeft="409,365.666666666667" />
+        <EdgeLayout
+          Id="Package\Empl Department History\Load Empl Department History.Paths[Derived Column Output]"
+          TopLeft="501.5,324.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empl Department History\Load Empl Department History\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empl Department History\Load Empl Department History\OLE DB Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empl Department History\Load Empl Department History\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Empl Pay History\Empl Pay History">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Empl Pay History\Empl Pay History\OLE DB Source"
+          TopLeft="411.5,117.5" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\Empl Pay History\Empl Pay History\Set SSISTrackId"
+          TopLeft="410,202" />
+        <EdgeLayout
+          Id="Package\Empl Pay History\Empl Pay History.Paths[OLE DB Source Output]"
+          TopLeft="489.083333333333,160.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.8333333333333"
+              Start="0,0"
+              End="0,34.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Empl Pay History\Empl Pay History\OLE DB Destination"
+          TopLeft="408,285" />
+        <EdgeLayout
+          Id="Package\Empl Pay History\Empl Pay History.Paths[Derived Column Output]"
+          TopLeft="492.333333333333,244.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.3333333333333"
+              Start="0,0"
+              End="0,32.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empl Pay History\Empl Pay History\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empl Pay History\Empl Pay History\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
